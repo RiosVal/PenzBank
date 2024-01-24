@@ -1,4 +1,8 @@
 package com.penz.bank.repository;
 
-public interface ClientRepository {
+import com.penz.bank.domain.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ClientRepository extends JpaRepository<Client, Integer> {
+
 }
