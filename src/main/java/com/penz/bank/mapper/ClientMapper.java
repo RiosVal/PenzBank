@@ -21,7 +21,7 @@ public class ClientMapper {
                 .build();
     }
 
-    public ClientDTO domainToDto(Client client) {
+    public static ClientDTO domainToDto(Client client) {
         return ClientDTO.builder()
                 .id(client.getId())
                 .cedula(client.getCedula())

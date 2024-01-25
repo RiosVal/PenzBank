@@ -13,7 +13,7 @@ public class BankMapper {
                 .build();
     }
 
-    public BankDTO domainToDto(Bank bank) {
+    public static BankDTO domainToDto(Bank bank) {
         return BankDTO.builder()
                 .id(bank.getId())
                 .bankName(bank.getBankName())

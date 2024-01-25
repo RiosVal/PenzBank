@@ -19,7 +19,7 @@ public class AccountMapper {
                 .build();
     }
 
-    public AccountDTO domainToDto(Account account) {
+    public static AccountDTO domainToDto(Account account) {
         return AccountDTO.builder()
                 .id(account.getId())
                 .accType(account.getAccType())

@@ -18,7 +18,7 @@ public class AccountMovementMapper {
                 .build();
     }
 
-    public AccountMovementDTO domainToDto(AccountMovement accountMovement){
+    public static AccountMovementDTO domainToDto(AccountMovement accountMovement){
         return AccountMovementDTO.builder()
                 .id(accountMovement.getId())
                 .transactionDate(accountMovement.getTransactionDate())

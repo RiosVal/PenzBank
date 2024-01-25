@@ -20,7 +20,7 @@ public class CdtMapper {
                 .build();
     }
 
-    public CdtDTO domainToDto(Cdt cdt) {
+    public static CdtDTO domainToDto(Cdt cdt) {
         return CdtDTO.builder()
                 .id(cdt.getId())
                 .cdtNumber(cdt.getCdtNumber())

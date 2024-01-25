@@ -19,7 +19,7 @@ public class RegisteredRecipientMapper {
                 .build();
     }
 
-    public RegisteredRecipientDTO domainToDto(RegisteredRecipient registeredRecipient) {
+    public static RegisteredRecipientDTO domainToDto(RegisteredRecipient registeredRecipient) {
         return RegisteredRecipientDTO.builder()
                 .id(registeredRecipient.getId())
                 .cedula(registeredRecipient.getCedula())

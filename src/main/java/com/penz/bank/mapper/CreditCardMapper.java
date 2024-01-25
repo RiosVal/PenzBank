@@ -19,7 +19,7 @@ public class CreditCardMapper {
                 .build();
     }
 
-    public CreditCardDTO domainToDto(CreditCard creditCard) {
+    public static CreditCardDTO domainToDto(CreditCard creditCard) {
         return CreditCardDTO.builder()
                 .id(creditCard.getId())
                 .cardNumber(creditCard.getCardNumber())

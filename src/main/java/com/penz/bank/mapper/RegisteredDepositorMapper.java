@@ -16,7 +16,7 @@ public class RegisteredDepositorMapper {
                 .build();
     }
 
-    public RegisteredDepositorDTO domainToDto(RegisteredDepositor registeredDepositor) {
+    public static RegisteredDepositorDTO domainToDto(RegisteredDepositor registeredDepositor) {
         return RegisteredDepositorDTO.builder()
                 .id(registeredDepositor.getId())
                 .cedula(registeredDepositor.getCedula())

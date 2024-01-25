@@ -17,7 +17,7 @@ public class BranchMapper {
                 .build();
     }
 
-    public BranchDTO domainToDto(Branch branch) {
+    public static BranchDTO domainToDto(Branch branch) {
         return BranchDTO.builder()
                 .id(branch.getId())
                 .code(branch.getCode())

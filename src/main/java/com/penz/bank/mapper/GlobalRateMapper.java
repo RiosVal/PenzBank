@@ -16,7 +16,7 @@ public class GlobalRateMapper {
                 .build();
     }
 
-    public GlobalRateDTO domainToDto(GlobalRate globalRate) {
+    public static GlobalRateDTO domainToDto(GlobalRate globalRate) {
         return GlobalRateDTO.builder()
                 .id(globalRate.getId())
                 .product(globalRate.getProduct())

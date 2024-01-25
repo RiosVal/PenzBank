@@ -41,6 +41,6 @@ public class Client {
     @Column(nullable = false, length = 30)
     private String username;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, name = "clpassword")
     private String password;
 }

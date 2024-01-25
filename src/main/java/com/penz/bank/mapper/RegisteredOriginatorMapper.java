@@ -19,7 +19,7 @@ public class RegisteredOriginatorMapper {
                 .build();
     }
 
-    public RegisteredOriginatorDTO domainToDto(RegisteredOriginator registeredOriginator) {
+    public static RegisteredOriginatorDTO domainToDto(RegisteredOriginator registeredOriginator) {
         return RegisteredOriginatorDTO.builder()
                 .id(registeredOriginator.getId())
                 .cedula(registeredOriginator.getCedula())
