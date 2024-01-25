@@ -4,6 +4,7 @@ import com.penz.bank.domain.Bank;
 import com.penz.bank.dto.BankDTO;
 import com.penz.bank.mapper.BankMapper;
 import com.penz.bank.repository.BankRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,4 +28,12 @@ public class BankController {
         return bankRepository.findAll();
     }
 
+    @GetMapping("/searchId/{id}")
+    public ResponseEntity<BankDTO> searchForId(@PathVariable Integer id) throws Exception {
+        Bank bank = bankRepository.getReferenceById(id);
+
+        BankDTO bankDTO = BankMapper.domainToDto(bank);
+
+        return new ResponseEntity<>(bankDTO, HttpStatus.OK);
+    }
 }
