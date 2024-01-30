@@ -116,4 +116,23 @@ public class AccountServiceImpl implements AccountService {
         return AccountMapper.domainToDtoList(accountRepository.findAll());
     }
 
+    @Override
+    public AccountDTO findByAccountNumber(String accNumber) throws Exception {
+        // Validar que el número de cuenta no sea nulo o vacío
+        if (accNumber == null || accNumber.isEmpty()) {
+            throw new Exception("Account number is null or empty");
+        }
+
+        // Buscar la cuenta por número de cuenta
+        Optional<Account> accountOptional = accountRepository.findByAccNumber(accNumber);
+
+        if (accountOptional.isPresent()) {
+            // Mapear la cuenta a DTO y devolverla
+            return AccountMapper.domainToDto(accountOptional.get());
+        } else {
+            // Lanzar una excepción si la cuenta no se encuentra
+            throw new Exception(String.format("No account found with account number %s", accNumber));
+        }
+    }
+
 }
