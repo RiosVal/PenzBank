@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -17,8 +18,10 @@ public class AccountDTO {
     private String accState;
     private Date openingDate;
     private Date cancellationDate;
-    private Double availableAmount;
+    private BigDecimal availableAmount;
     private Integer clientId;
     private Integer branchId;
     private Integer globalRateId;
+
+    private String clientCedula;
 }

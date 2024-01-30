@@ -28,8 +28,19 @@ public class AccountMapper {
                 .openingDate(account.getOpeningDate())
                 .cancellationDate(account.getCancellationDate())
                 .availableAmount(account.getAvailableAmount())
-                //THERE ARE DEPENDENCIES
+                .clientId((account.getClient() == null) ?
+                        null : account.getClient().getId())
+                .branchId((account.getBranch() == null) ?
+                        null : account.getBranch().getId())
+                .globalRateId((account.getGlobalRate() == null) ?
+                        null : account.getGlobalRate().getId())
+                .clientCedula((account.getClient() == null) ?
+                        null : account.getClient().getCedula())
                 .build();
+    }
+
+    public static List<AccountDTO> domainToDtoList(List<Account> accounts) {
+        return accounts.stream().map(AccountMapper::domainToDto).toList();
     }
 
     public List<Account> dtoToDomainList(List<AccountDTO> accountDTOS) {

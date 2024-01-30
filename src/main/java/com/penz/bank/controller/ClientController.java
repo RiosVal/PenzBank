@@ -4,12 +4,10 @@ import com.penz.bank.domain.Client;
 import com.penz.bank.dto.ClientDTO;
 import com.penz.bank.mapper.ClientMapper;
 import com.penz.bank.repository.ClientRepository;
+import com.penz.bank.service.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,9 +15,11 @@ import java.util.List;
 @RequestMapping("/client")
 public class ClientController {
 
+    private final ClientService clientService;
     private final ClientRepository clientRepository;
 
-    public ClientController(ClientRepository clientRepository) {
+    public ClientController(ClientService clientService, ClientRepository clientRepository) {
+        this.clientService = clientService;
         this.clientRepository = clientRepository;
     }
 
@@ -34,4 +34,11 @@ public class ClientController {
 
         return new ResponseEntity<>(clientDTO, HttpStatus.OK);
     }
+
+    @PostMapping("/save")
+    public ResponseEntity<ClientDTO> saveClient(@RequestBody ClientDTO clientDTO) throws Exception{
+        ClientDTO clientDTO1 = clientService.saveNewClient(clientDTO);
+        return new ResponseEntity<>(clientDTO1, HttpStatus.OK);
+    }
+
 }
