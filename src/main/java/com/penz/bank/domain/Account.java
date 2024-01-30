@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -36,7 +37,7 @@ public class Account {
     private Date cancellationDate;
 
     @Column(nullable = false, name = "availableamount")
-    private Double availableAmount;
+    private BigDecimal availableAmount;
 
     @ManyToOne
     @JoinColumn(name = "accowner_id", referencedColumnName = "id", nullable = false)
