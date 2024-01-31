@@ -74,4 +74,34 @@ public class ClientServiceImpl implements ClientService {
         return clientDTO;
 
     }
+
+    @Override
+    public ClientDTO findByCedula(String cedula) throws Exception {
+        if (cedula == null || cedula.isEmpty()) {
+            throw new Exception("Cedula is null or empty");
+        }
+
+        Optional<Client> clientOptional = clientRepository.findClientByCedula(cedula);
+
+        if (clientOptional.isPresent()) {
+            return ClientMapper.domainToDto(clientOptional.get());
+        } else {
+            throw new Exception(String.format("No client found with cedula %s", cedula));
+        }
+    }
+
+    @Override
+    public ClientDTO findByUsername(String username) throws Exception {
+        if (username == null || username.isEmpty()) {
+            throw new Exception("Username is null or empty");
+        }
+
+        Optional<Client> clientOptional = clientRepository.findClientByUsername(username);
+
+        if (clientOptional.isPresent()) {
+            return ClientMapper.domainToDto(clientOptional.get());
+        } else {
+            throw new Exception(String.format("No client found with username %s", username));
+        }
+    }
 }

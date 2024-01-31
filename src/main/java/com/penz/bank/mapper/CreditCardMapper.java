@@ -28,8 +28,17 @@ public class CreditCardMapper {
                 .cancellationDate(creditCard.getCancellationDate())
                 .creditLimit(creditCard.getCreditLimit())
                 .debt(creditCard.getDebt())
-                //THERE ARE DEPENDENCIES
+                .clientId((creditCard.getClient() == null) ?
+                        null : creditCard.getClient().getId())
+                .branchId((creditCard.getBranch() == null) ?
+                        null : creditCard.getBranch().getId())
+                .globalRateId((creditCard.getGlobalRate() == null) ?
+                        null : creditCard.getGlobalRate().getId())
                 .build();
+    }
+
+    public static List<CreditCardDTO> domainToDtoList(List<CreditCard> creditCards) {
+        return creditCards.stream().map(CreditCardMapper::domainToDto).toList();
     }
 
     public List<CreditCard> dtoToDomainList(List<CreditCardDTO> creditCardDTOS){

@@ -27,11 +27,23 @@ public class ClientController {
     public List<Client> getAll() { return clientRepository.findAll(); }
 
     @GetMapping("/searchId/{id}")
-    public ResponseEntity<ClientDTO> searchForId(@PathVariable Integer id) throws Exception {
+    public ResponseEntity<ClientDTO> searchById(@PathVariable Integer id) throws Exception {
         Client client = clientRepository.getReferenceById(id);
 
         ClientDTO clientDTO = ClientMapper.domainToDto(client);
 
+        return new ResponseEntity<>(clientDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/searchByCedula/{cedula}")
+    public ResponseEntity<ClientDTO> searchByCedula(@PathVariable String cedula) throws Exception{
+        ClientDTO clientDTO = clientService.findByCedula(cedula);
+        return new ResponseEntity<>(clientDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/searchByUsername/{username}")
+    public ResponseEntity<ClientDTO> searchByUsername(@PathVariable String username) throws Exception{
+        ClientDTO clientDTO = clientService.findByUsername(username);
         return new ResponseEntity<>(clientDTO, HttpStatus.OK);
     }
 
